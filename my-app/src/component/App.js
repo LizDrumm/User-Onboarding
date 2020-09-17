@@ -106,7 +106,7 @@ export default function App() {
   }
 
 
-  //////////////// EVENT HANDLERS ////////////////
+  ////////////// EVENT HANDLERS ////////////////
   const inputChange = (name, value) => {
     // 🔥 STEP 10- RUN VALIDATION WITH YUP
     validate(name, value)
@@ -122,7 +122,7 @@ export default function App() {
       last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
-      // 🔥 STEP 7- WHAT ABOUT HOBBIES?
+      // 🔥 STEP 7- WHAT ABOUT Terms?
       terms: formValues.terms
     }
     // 🔥 STEP 8- POST NEW FRIEND USING HELPER
