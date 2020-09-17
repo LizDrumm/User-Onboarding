@@ -6,6 +6,7 @@ export default {
     black:'black', //darkest
     paddingSmall:'8px',
     mobileBreakpoint:'(max-width: 550px)',
-    leftMargin: '25px'
+    leftMargin: '15%'
+    
 
 }

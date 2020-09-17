@@ -1,9 +1,10 @@
 
-import logo from '../logo.svg';
+//import logo from '../logo.svg';
 import '../App.css';
 import React, { useState, useEffect } from 'react'
 import User from './User'
 import UserForm from './UserForm'
+import styled from 'styled-components'
 
 
 // 🔥 STEP 3- FLESH THE SCHEMA IN ITS OWN FILE
@@ -14,25 +15,31 @@ import * as yup from 'yup'
 
 
 
-
 //////////////// INITIAL STATES ////////////////
 const initialFormValues = {
   ///// TEXT INPUTS /////
-  name: '',
+  first_name: '',
+  last_name:'',
   email: '',
   password: '',
   ///// CHECKBOXES /////
   terms: false,
 }
 const initialFormErrors = {
-  name: '',
+  first_name: '',
+  last_name:'',
   email: '',
   password: '',
+  terms:'',
 }
 const initialUsers = []
 const initialDisabled = true
 
 
+const StyledApp = styled.div `
+  margin-left:${pr => pr.theme.leftMargin};
+ 
+`
 
 
 export default function App() {
@@ -50,7 +57,7 @@ export default function App() {
 
     axios.get('https://reqres.in/api/users')
       .then(res => {
-        setUsers(res.data)
+        setUsers(res.data.data)
       })
       .catch(err => {
         debugger
@@ -60,7 +67,7 @@ export default function App() {
 
   const postNewUser = newUser => {
     // 🔥 STEP 6- IMPLEMENT! ON SUCCESS ADD NEWLY CREATED FRIEND TO STATE
-    //    helper to [POST] `newFriend` to `http://localhost:4000/friends`
+    //    helper to [POST] `newUser` to `https://reqres.in/api/users`
     //    and regardless of success or failure, the form should reset
     axios.post("https://reqres.in/api/users", newUser)
       .then(res => {
@@ -111,7 +118,8 @@ export default function App() {
 
   const formSubmit = () => {
     const newUser = {
-      name: formValues.name.trim(),
+      first_name: formValues.first_name.trim(),
+      last_name: formValues.last_name.trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
       // 🔥 STEP 7- WHAT ABOUT HOBBIES?
@@ -143,8 +151,8 @@ export default function App() {
   }, [formValues])
 
   return (
-    <div className='container'>
-      <header><h1>New User </h1></header>
+    <StyledApp className='container'>
+      <header><h1>Fill out the information below to make an account. </h1></header>
 
       <UserForm
         values={formValues}
@@ -154,14 +162,12 @@ export default function App() {
         errors={formErrors}
       />
 
-      {/* {
-        users.map((user,id) => {
-          return (
-            <User key={id} details={user} />
-          )
-        })
-      } */}
+      {users.map((user) => {
+        return <User user={user} />;
+      })}
+        
+    
 
-    </div>
+    </StyledApp>
   )
 }

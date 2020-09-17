@@ -25,13 +25,13 @@ export default function UserForm(props) {
   return (
     <form className='form container' onSubmit={onSubmit}>
       <div className='form-group submit'>
-        <h2>Add a User</h2>
-        {/* 🔥 DISABLE THE BUTTON */}
-        <button disabled={disabled}>submit</button>
+        <h2>Make an account</h2>
+       
 
         <div className='errors'>
           {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
-          <div>{errors.name}</div>
+          <div>{errors.first_name}</div>
+          <div>{errors.last_name}</div>
           <div>{errors.email}</div>
           <div>{errors.password}</div>
          
@@ -43,38 +43,47 @@ export default function UserForm(props) {
 
         {/* ////////// TEXT INPUTS ////////// */}
     
-        <label>Name&nbsp;
+        <label>First Name&nbsp;
           <input
-            value={values.name}
+            value={values.first_name}
             onChange={onChange}
-            name='name'
+            name='first_name'
             type='text'
           />
         </label>
-
-        <label>Email
+        <br/>
+        <label>Last Name&nbsp;
+          <input
+            value={values.last_name}
+            onChange={onChange}
+            name='last_name'
+            type='text'
+          />
+        </label>
+        <br/>
+        <label>Email &nbsp;
           <input
             value={values.email}
             onChange={onChange}
             name='email'
-            type='text'
+            type='email'
           />
            </label>
-
-        <label>Password
+           <br/>
+        <label>Password &nbsp;
           <input
             value={values.password}
             onChange={onChange}
             name='password'
-            type='text'
+            type='password'
           />
         </label>
-
+        <br/>
         </div>
 
       <div className='form-group checkboxes'>
         <h4>Terms and Conditions</h4>
-        <p>blahblahblahblah</p>
+        <p>Here are the terms and conditions you must agree to if you'd like to be a user.</p>
 
         {/* ////////// CHECKBOXES ////////// */}
 
@@ -86,7 +95,10 @@ export default function UserForm(props) {
             onChange={onChange}
           />
         </label>
-
+        <br/>
+         {/* 🔥 DISABLE THE BUTTON til all info is filled out*/}
+        <br/>
+             <button disabled={disabled}>submit</button>
         </div>
     </form>
         )
