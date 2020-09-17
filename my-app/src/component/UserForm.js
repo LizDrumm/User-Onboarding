@@ -98,7 +98,7 @@ export default function UserForm(props) {
         <br/>
          {/* 🔥 DISABLE THE BUTTON til all info is filled out*/}
         <br/>
-             <button disabled={disabled}>submit</button>
+             <button id="button" disabled={disabled}>submit</button>
         </div>
     </form>
         )

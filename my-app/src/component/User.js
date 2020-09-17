@@ -8,8 +8,7 @@ function User(props) {
 
   return (
     <div className='User container'>
-      <h2>{user.first_name}</h2>
-      <h2>{user.last_name}</h2>
+      <h2>{user.first_name} {user.last_name}</h2>
       <p>Email: {user.email}</p>
       <p>Password: {user.password}</p>
 

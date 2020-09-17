@@ -45,7 +45,7 @@ const StyledApp = styled.div `
 export default function App() {
   //////////////// STATES ////////////////
  
-  const [users, setUsers] = useState(initialUsers)          // array of friend objects
+  const [users, setUsers] = useState(initialUsers)          // array of users objects
   const [formValues, setFormValues] = useState(initialFormValues) // object
   const [formErrors, setFormErrors] = useState(initialFormErrors) // object
   const [disabled, setDisabled] = useState(initialDisabled)       // boolean
@@ -134,7 +134,7 @@ export default function App() {
   useEffect(() => {
     getUsers()
   }, [])
-
+//checking against entire schema
   useEffect(() => {
     // 🔥 STEP 9- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
 
@@ -163,7 +163,7 @@ export default function App() {
       />
 
       {users.map((user) => {
-        return <User user={user} />;
+        return <User key={user.id} user={user} />;
       })}
         
     
